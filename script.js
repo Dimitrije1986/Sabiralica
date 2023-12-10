@@ -1,30 +1,30 @@
-// brojevi za pitanje
-const numRandom1 = Math.trunc(Math.random() * 5 + 1);
-const numRandom2 = Math.trunc(Math.random() * 5 + 1);
-
-let numField1 = document.querySelector(".num_1");
-let numField2 = document.querySelector(".num_2");
-
-// brojevi za odgovore
-const correctAnswer = numRandom1 + numRandom2;
-
-let resRandom1 = Math.trunc(Math.random() * 21);
-let resRandom2 = Math.trunc(Math.random() * 21);
-
-const resultField = document.querySelectorAll(".result");
-
 //Upisivanje brojeva na ocitavanje strane
 window.addEventListener("load", (e) => {
-  numField1.textContent = numRandom1;
-  numField2.textContent = numRandom2;
+  // brojevi za pitanje
+  const questionNumberOne = Math.trunc(Math.random() * 5 + 1);
+  const questionNumberTwo = Math.trunc(Math.random() * 5 + 1);
 
-  resRandom1 === correctAnswer ? (resRandom1 += 3) : resRandom1;
+  const questionFieldOne = document.querySelector(".num_1");
+  const questionFieldTwo = document.querySelector(".num_2");
 
-  resRandom2 === correctAnswer ? (resRandom2 += 3) : resRandom2;
+  questionFieldOne.textContent = questionNumberOne;
+  questionFieldTwo.textContent = questionNumberTwo;
 
-  const arrOfNumber = [resRandom1, correctAnswer, resRandom2];
+  // brojevi za odgovore
+  const correctAnswer = questionNumberOne + questionNumberTwo;
 
+  let wrongAnswerOne = Math.trunc(Math.random() * 21);
+  let wrongAnswerTwo = Math.trunc(Math.random() * 21);
+
+  wrongAnswerOne === correctAnswer ? (wrongAnswerOne += 3) : wrongAnswerOne;
+
+  wrongAnswerTwo === correctAnswer ? (wrongAnswerTwo += 3) : wrongAnswerTwo;
+
+  //ispisivanje brojeva u polje odgovora
+  const arrOfNumber = [wrongAnswerOne, correctAnswer, wrongAnswerTwo];
   const shuffledArrOfNum = arrOfNumber.sort();
+
+  const resultField = document.querySelectorAll(".result");
 
   resultField.forEach((e) => {
     const newElement = document.createElement("p");
